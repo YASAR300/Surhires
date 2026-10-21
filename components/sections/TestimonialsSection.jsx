@@ -1,0 +1,61 @@
+import { Quote, Star } from 'lucide-react';
+import Container from '@/components/ui/Container';
+import Section from '@/components/ui/Section';
+import Badge from '@/components/ui/Badge';
+import { Card, CardContent } from '@/components/ui/Card';
+import { testimonials } from '@/data/testimonials';
+
+export default function TestimonialsSection() {
+  return (
+    <Section bg="warm" id="testimonials">
+      <Container>
+        <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
+          <Badge variant="teal">Proven Outcomes</Badge>
+          <h2 className="text-h2 text-[#0B1F3A]">Trusted by Engineering Leaders & Talent</h2>
+          <p className="text-body text-[#64748B]">
+            Here is what CTOs, talent directors, and software developers say about partnering with Surhires.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {testimonials.map((t) => (
+            <Card key={t.id} hover className="flex flex-col justify-between">
+              <CardContent className="p-7 space-y-5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1 text-[#F59E0B]">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-[#F59E0B]" />
+                    ))}
+                  </div>
+                  <Quote className="w-8 h-8 text-[#0B1F3A]/10" />
+                </div>
+
+                <p className="text-sm md:text-base text-[#1E293B] italic leading-relaxed">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+
+                <div className="pt-4 border-t border-[#F1F5F9] flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#0B1F3A] text-[#14B8A6] font-bold text-xs flex items-center justify-center">
+                      {t.avatar}
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-[#0B1F3A]">{t.author}</div>
+                      <div className="text-xs text-[#64748B]">
+                        {t.role} · <span className="text-[#0F766E] font-medium">{t.company}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <span className="hidden sm:inline-block px-2.5 py-1 text-xs font-semibold rounded-md bg-[#CCFBF1] text-[#0F766E]">
+                    {t.metrics}
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  );
+}
