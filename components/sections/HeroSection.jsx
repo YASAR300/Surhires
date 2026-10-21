@@ -5,7 +5,7 @@ import HeroIllustration from './HeroIllustration';
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-8 pb-14 md:pt-12 md:pb-20 lg:pt-16 lg:pb-24 bg-white">
+    <section className="relative z-20 pt-8 pb-14 md:pt-12 md:pb-22 lg:pt-16 lg:pb-24 bg-white">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Headlines, CTAs, and Unified Premium Search Bar */}
@@ -24,7 +24,7 @@ export default function HeroSection() {
 
             {/* Action Buttons: Get Started + Learn more */}
             <div className="flex flex-wrap items-center gap-3.5 pt-1">
-              <Button href="/jobs" variant="primary" size="md" className="px-6 rounded-xl">
+              <Button href="/jobs" variant="primary" size="md" className="px-6 rounded-xl shadow-md shadow-[#2563EB]/20">
                 Get Started
               </Button>
               <Button href="/#how-it-works" variant="outline" size="md" className="px-6 rounded-xl">
@@ -33,7 +33,7 @@ export default function HeroSection() {
             </div>
 
             {/* Unified Floating Search Bar with interactive suggestions & custom dropdown */}
-            <div className="pt-4">
+            <div className="pt-4 relative z-30">
               <HeroSearch />
             </div>
           </div>

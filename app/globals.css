@@ -164,6 +164,15 @@ h1, h2, h3, h4, h5, h6 {
   outline-offset: 2px;
 }
 
+input:focus,
+input:focus-visible,
+select:focus,
+select:focus-visible,
+textarea:focus,
+textarea:focus-visible {
+  outline: none;
+}
+
 /* Respect prefers-reduced-motion globally */
 @media (prefers-reduced-motion: reduce) {
   *,
