@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { X, ArrowRight, Briefcase } from 'lucide-react';
+import { X, ArrowRight } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import Logo from '@/components/ui/Logo';
 
 export default function MobileMenu({ isOpen, onClose, navigationLinks = [] }) {
   if (!isOpen) return null;
@@ -19,18 +20,7 @@ export default function MobileMenu({ isOpen, onClose, navigationLinks = [] }) {
       {/* Menu Drawer */}
       <div className="fixed inset-x-0 top-0 bg-white border-b border-[#E2E8F0] shadow-xl p-6 transition-all duration-300">
         <div className="flex items-center justify-between pb-6 border-b border-[#F1F5F9]">
-          <Link
-            href="/"
-            onClick={onClose}
-            className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-[#0B1F3A]"
-          >
-            <div className="w-8 h-8 rounded-lg bg-[#0B1F3A] flex items-center justify-center text-[#14B8A6]">
-              <Briefcase className="w-4 h-4" />
-            </div>
-            <span>
-              Sur<span className="text-[#0F766E]">hires</span>
-            </span>
-          </Link>
+          <Logo variant="navy" size="sm" href="/" onClick={onClose} />
           <button
             type="button"
             onClick={onClose}
@@ -60,7 +50,7 @@ export default function MobileMenu({ isOpen, onClose, navigationLinks = [] }) {
           </Button>
           <Button
             href="/employers"
-            variant="teal"
+            variant="accent"
             size="md"
             className="w-full justify-center"
             icon={ArrowRight}

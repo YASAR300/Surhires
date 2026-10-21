@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Briefcase } from 'lucide-react';
 import Container from '@/components/ui/Container';
+import Logo from '@/components/ui/Logo';
 import { footerLinks } from '@/data/navigation';
 
 function LinkedInIcon(props) {
@@ -36,17 +36,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-[#162E50]">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <Link
-              href="/"
-              className="flex items-center gap-2.5 text-2xl font-black tracking-tight text-white group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#14B8A6] rounded-md inline-flex"
-            >
-              <div className="w-9 h-9 rounded-xl bg-[#14B8A6] flex items-center justify-center text-[#0B1F3A] shadow-sm">
-                <Briefcase className="w-5 h-5" />
-              </div>
-              <span className="font-heading">
-                Sur<span className="text-[#14B8A6]">hires</span>
-              </span>
-            </Link>
+            <Logo variant="white" size="md" href="/" />
 
             <p className="text-[#94A3B8] text-sm leading-relaxed max-w-sm">
               The precision hiring platform built for high-growth tech companies and pre-calibrated engineering, product, and leadership talent.

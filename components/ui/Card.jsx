@@ -1,11 +1,22 @@
 import { cn } from '@/lib/utils';
 
-export function Card({ children, className, hover = false, ...props }) {
+/**
+ * Surface card component with optional hover elevation that respects prefers-reduced-motion.
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - Card contents
+ * @param {string} [props.className] - Additional classes
+ * @param {boolean} [props.hover=false] - Enables hover elevation and lift effect
+ * @param {boolean} [props.border=true] - Renders standard border
+ */
+export function Card({ children, className, hover = false, border = true, ...props }) {
   return (
     <div
       className={cn(
-        'rounded-xl border border-[#E2E8F0] bg-white text-[#1E293B] shadow-sm shadow-[#0B1F3A]/5 transition-all duration-200',
-        hover && 'hover:shadow-md hover:shadow-[#0B1F3A]/10 hover:border-[#CBD5E1] hover:-translate-y-0.5',
+        'rounded-xl bg-white text-[#1E293B] shadow-sm shadow-[#0B1F3A]/5 transition-all duration-200',
+        border && 'border border-[#E2E8F0]',
+        hover &&
+          'hover:shadow-md hover:shadow-[#0B1F3A]/10 hover:border-[#CBD5E1] motion-safe:hover:-translate-y-1 motion-reduce:hover:transform-none',
         className
       )}
       {...props}
@@ -15,6 +26,9 @@ export function Card({ children, className, hover = false, ...props }) {
   );
 }
 
+/**
+ * Card header area for titles and meta details.
+ */
 export function CardHeader({ children, className, ...props }) {
   return (
     <div className={cn('p-6 pb-3 flex flex-col space-y-1.5', className)} {...props}>
@@ -23,6 +37,9 @@ export function CardHeader({ children, className, ...props }) {
   );
 }
 
+/**
+ * Card title element with customizable HTML tag.
+ */
 export function CardTitle({ children, className, as: Component = 'h3', ...props }) {
   return (
     <Component
@@ -34,6 +51,9 @@ export function CardTitle({ children, className, as: Component = 'h3', ...props 
   );
 }
 
+/**
+ * Supporting subtitle or description within a card.
+ */
 export function CardDescription({ children, className, ...props }) {
   return (
     <p className={cn('text-sm text-[#64748B] leading-relaxed', className)} {...props}>
@@ -42,6 +62,9 @@ export function CardDescription({ children, className, ...props }) {
   );
 }
 
+/**
+ * Main body content of the card.
+ */
 export function CardContent({ children, className, ...props }) {
   return (
     <div className={cn('p-6 pt-3', className)} {...props}>
@@ -50,6 +73,9 @@ export function CardContent({ children, className, ...props }) {
   );
 }
 
+/**
+ * Footer area with subtle top separator.
+ */
 export function CardFooter({ children, className, ...props }) {
   return (
     <div

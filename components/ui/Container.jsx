@@ -1,5 +1,12 @@
 import { cn } from '@/lib/utils';
 
+/**
+ * Standard content container constrained to ~1200px with responsive padding.
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - Inner container content
+ * @param {string} [props.className] - Additional CSS classes
+ */
 export default function Container({ children, className, ...props }) {
   return (
     <div

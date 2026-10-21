@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { UserCheck, FileCode, CheckCircle2, Building2, Search, Award } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
-import Badge from '@/components/ui/Badge';
+import SectionHeading from '@/components/ui/SectionHeading';
 import { cn } from '@/lib/utils';
 
 const candidateSteps = [
@@ -63,20 +63,22 @@ export default function HowItWorksSection() {
   return (
     <Section bg="white" id="how-it-works">
       <Container>
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-          <Badge variant="teal">Proven Process</Badge>
-          <h2 className="text-h2 text-[#0B1F3A]">How Surhires Works</h2>
-          <p className="text-body text-[#64748B]">
-            Engineered for high-signal matching, mutual transparency, and zero wasted interview cycles.
-          </p>
+        <SectionHeading
+          eyebrow="Proven Process"
+          title="How Surhires Works"
+          subtitle="Engineered for high-signal matching, mutual transparency, and zero wasted interview cycles."
+          alignment="center"
+          level="h2"
+        />
 
-          {/* Tab Switcher */}
-          <div className="inline-flex p-1 rounded-xl bg-[#F1F5F9] border border-[#E2E8F0] mt-4">
+        {/* Tab Switcher */}
+        <div className="flex justify-center -mt-6 mb-12">
+          <div className="inline-flex p-1 rounded-xl bg-[#F1F5F9] border border-[#E2E8F0]">
             <button
               type="button"
               onClick={() => setActiveTab('candidates')}
               className={cn(
-                'px-5 py-2 text-sm font-semibold rounded-lg transition-all',
+                'px-5 py-2 text-sm font-semibold rounded-lg transition-all cursor-pointer',
                 activeTab === 'candidates'
                   ? 'bg-white text-[#0B1F3A] shadow-xs'
                   : 'text-[#64748B] hover:text-[#0B1F3A]'
@@ -88,7 +90,7 @@ export default function HowItWorksSection() {
               type="button"
               onClick={() => setActiveTab('employers')}
               className={cn(
-                'px-5 py-2 text-sm font-semibold rounded-lg transition-all',
+                'px-5 py-2 text-sm font-semibold rounded-lg transition-all cursor-pointer',
                 activeTab === 'employers'
                   ? 'bg-white text-[#0B1F3A] shadow-xs'
                   : 'text-[#64748B] hover:text-[#0B1F3A]'

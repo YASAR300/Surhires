@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, Briefcase, ArrowRight } from 'lucide-react';
+import { Menu, ArrowRight } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import Logo from '@/components/ui/Logo';
 import MobileMenu from './MobileMenu';
 import { navigationLinks } from '@/data/navigation';
 import { cn } from '@/lib/utils';
@@ -31,18 +32,8 @@ export default function Navbar() {
       >
         <Container>
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center gap-2.5 text-2xl font-black tracking-tight text-[#0B1F3A] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F766E] rounded-md"
-            >
-              <div className="w-9 h-9 rounded-xl bg-[#0B1F3A] flex items-center justify-center text-[#14B8A6] shadow-sm shadow-[#0B1F3A]/20 transition-transform group-hover:scale-105">
-                <Briefcase className="w-5 h-5" />
-              </div>
-              <span className="font-heading">
-                Sur<span className="text-[#0F766E]">hires</span>
-              </span>
-            </Link>
+            {/* Reusable Logo */}
+            <Logo variant="navy" size="md" href="/" />
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-8">
@@ -64,7 +55,7 @@ export default function Navbar() {
               </Button>
               <Button
                 href="/employers"
-                variant="teal"
+                variant="accent"
                 size="md"
                 icon={ArrowRight}
                 iconPosition="right"

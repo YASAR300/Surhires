@@ -1,7 +1,7 @@
 import { Quote, Star } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
-import Badge from '@/components/ui/Badge';
+import SectionHeading from '@/components/ui/SectionHeading';
 import { Card, CardContent } from '@/components/ui/Card';
 import { testimonials } from '@/data/testimonials';
 
@@ -9,13 +9,13 @@ export default function TestimonialsSection() {
   return (
     <Section bg="warm" id="testimonials">
       <Container>
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-          <Badge variant="teal">Proven Outcomes</Badge>
-          <h2 className="text-h2 text-[#0B1F3A]">Trusted by Engineering Leaders & Talent</h2>
-          <p className="text-body text-[#64748B]">
-            Here is what CTOs, talent directors, and software developers say about partnering with Surhires.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="Proven Outcomes"
+          title="Trusted by Engineering Leaders & Talent"
+          subtitle="Here is what CTOs, talent directors, and software developers say about partnering with Surhires."
+          alignment="center"
+          level="h2"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((t) => (
