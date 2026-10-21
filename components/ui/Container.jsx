@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 
 /**
- * Standard content container constrained to ~1200px with responsive padding.
+ * Responsive content container configured for optimal width with minimal side dead-space.
  *
  * @param {Object} props
  * @param {React.ReactNode} props.children - Inner container content
@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 export default function Container({ children, className, ...props }) {
   return (
     <div
-      className={cn('w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8', className)}
+      className={cn('w-full max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10', className)}
       {...props}
     >
       {children}

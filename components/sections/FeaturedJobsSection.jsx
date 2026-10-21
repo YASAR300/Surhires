@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, MapPin, DollarSign, Briefcase, Clock } from 'lucide-react';
+import { ArrowRight, MapPin, DollarSign, Clock } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
@@ -11,16 +11,18 @@ export default function FeaturedJobsSection() {
   const featured = jobListings.slice(0, 4);
 
   return (
-    <Section bg="warm" id="featured-jobs">
+    <Section bg="slate" id="featured-jobs" className="border-t border-[#F1F5F9]">
       <Container>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div className="space-y-2 max-w-xl">
-            <Badge variant="teal">Featured Openings</Badge>
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE]">
+              Featured Opportunities
+            </span>
             <h2 className="text-h2 text-[#0B1F3A]">
-              Curated Opportunities at High-Growth Companies
+              Curated Openings at High-Growth Companies
             </h2>
             <p className="text-body text-[#64748B]">
-              Every position features verified salary transparency, direct engineering contacts, and verified remote/hybrid flexibility.
+              Every position features confirmed salary transparency, direct engineering contacts, and verified workplace flexibility.
             </p>
           </div>
           <Button href="/jobs" variant="outline" icon={ArrowRight} iconPosition="right">
@@ -30,15 +32,15 @@ export default function FeaturedJobsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featured.map((job) => (
-            <Card key={job.id} hover className="flex flex-col justify-between">
+            <Card key={job.id} hover className="flex flex-col justify-between border-[#E2E8F0] hover:border-[#93C5FD]">
               <CardHeader className="space-y-3">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <span className="text-xs font-semibold text-[#0F766E] uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-[#2563EB] uppercase tracking-wider">
                       {job.company}
                     </span>
                     <CardTitle className="text-lg sm:text-xl mt-0.5">
-                      <Link href={`/jobs#${job.id}`} className="hover:text-[#0F766E] transition-colors">
+                      <Link href={`/jobs#${job.id}`} className="hover:text-[#2563EB] transition-colors">
                         {job.title}
                       </Link>
                     </CardTitle>
@@ -50,15 +52,15 @@ export default function FeaturedJobsSection() {
 
                 <div className="flex flex-wrap items-center gap-y-1.5 gap-x-4 text-xs text-[#64748B]">
                   <span className="inline-flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5" />
+                    <MapPin className="w-3.5 h-3.5 text-[#94A3B8]" />
                     {job.location}
                   </span>
-                  <span className="inline-flex items-center gap-1 font-semibold text-[#0B1F3A]">
-                    <DollarSign className="w-3.5 h-3.5 text-[#0F766E]" />
+                  <span className="inline-flex items-center gap-1 font-bold text-[#0B1F3A]">
+                    <DollarSign className="w-3.5 h-3.5 text-[#2563EB]" />
                     {job.salary}
                   </span>
                   <span className="inline-flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
+                    <Clock className="w-3.5 h-3.5 text-[#94A3B8]" />
                     {job.postedAt}
                   </span>
                 </div>
@@ -73,7 +75,7 @@ export default function FeaturedJobsSection() {
                   {job.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 text-xs font-medium rounded-md bg-[#F1F5F9] text-[#475569]"
+                      className="px-2.5 py-1 text-xs font-medium rounded-md bg-[#EFF6FF] text-[#1E40AF]"
                     >
                       {tag}
                     </span>
@@ -86,10 +88,10 @@ export default function FeaturedJobsSection() {
                   </span>
                   <Link
                     href={`/jobs#${job.id}`}
-                    className="text-xs font-semibold text-[#0F766E] hover:text-[#0B1F3A] inline-flex items-center gap-1 transition-colors"
+                    className="text-xs font-bold text-[#2563EB] hover:text-[#1D4ED8] inline-flex items-center gap-1 transition-colors"
                   >
                     View Details & Apply
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </CardContent>

@@ -1,74 +1,107 @@
-import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Zap, Users, Sparkles } from 'lucide-react';
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Search, MapPin, ChevronDown } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
-import Badge from '@/components/ui/Badge';
+import HeroIllustration from './HeroIllustration';
 
 export default function HeroSection() {
+  const router = useRouter();
+  const [keyword, setKeyword] = useState('');
+  const [location, setLocation] = useState('Remote / Any City');
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const query = new URLSearchParams();
+    if (keyword.trim()) query.set('q', keyword.trim());
+    if (location && location !== 'Remote / Any City') query.set('location', location);
+    router.push(`/jobs?${query.toString()}`);
+  };
+
   return (
-    <section className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-24 lg:pt-20 lg:pb-28">
-      {/* Background subtle radial gradient */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-96 bg-gradient-to-b from-[#14B8A6]/10 via-[#FAF8F5]/0 to-transparent pointer-events-none -z-10" />
-
+    <section className="relative overflow-hidden pt-8 pb-14 md:pt-12 md:pb-20 lg:pt-16 lg:pb-24 bg-white">
       <Container>
-        <div className="text-center max-w-3xl mx-auto space-y-6">
-          {/* Announcement pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#CCFBF1]/70 border border-[#14B8A6]/30 text-xs font-semibold text-[#0F766E] shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#0F766E]" />
-            <span>Q1 2026 Tech Hiring Report: 94% interview-to-offer rate</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left Column: Headlines, CTAs, and Unified Floating Search Bar */}
+          <div className="lg:col-span-7 space-y-6">
+            {/* Main Display Headline in Royal Blue matching reference design */}
+            <h1 className="text-display font-extrabold text-[#2563EB] tracking-tight leading-[1.1]">
+              Find Jobs,<br />
+              <span className="text-[#1D4ED8]">Hire Top Tech Talent</span>
+            </h1>
+
+            {/* Subtitle paragraph */}
+            <p className="text-body-lg text-[#64748B] max-w-xl leading-relaxed">
+              Each month, high-growth companies and verified engineering, product, and AI leaders connect
+              directly on Surhires for transparent salaries and guaranteed 14-day placements.
+            </p>
+
+            {/* Action Buttons: Get Started + Learn more */}
+            <div className="flex flex-wrap items-center gap-3.5 pt-1">
+              <Button href="/jobs" variant="primary" size="md" className="px-6 rounded-xl">
+                Get Started
+              </Button>
+              <Button href="/#how-it-works" variant="outline" size="md" className="px-6 rounded-xl">
+                Learn more
+              </Button>
+            </div>
+
+            {/* Unified Floating Search Bar Capsule matching reference visual */}
+            <div className="pt-4">
+              <form
+                onSubmit={handleSearch}
+                className="bg-white rounded-2xl border border-[#E2E8F0] shadow-md shadow-[#2563EB]/5 p-2 sm:p-2.5 flex flex-col md:flex-row items-stretch md:items-center gap-2"
+              >
+                {/* Keyword Search Input */}
+                <div className="flex-1 flex items-center gap-2.5 px-3 py-2">
+                  <Search className="w-5 h-5 text-[#94A3B8] shrink-0" />
+                  <input
+                    type="text"
+                    value={keyword}
+                    onChange={(e) => setKeyword(e.target.value)}
+                    placeholder="Job title or keyword"
+                    className="w-full text-sm text-[#1E293B] placeholder-[#94A3B8] bg-transparent focus:outline-none"
+                  />
+                </div>
+
+                {/* Subtle Divider (Desktop) */}
+                <div className="hidden md:block w-px h-8 bg-[#E2E8F0]" />
+
+                {/* Location Select / Input */}
+                <div className="flex-1 flex items-center justify-between gap-2 px-3 py-2 relative">
+                  <div className="flex items-center gap-2.5 flex-1">
+                    <MapPin className="w-5 h-5 text-[#94A3B8] shrink-0" />
+                    <select
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                      className="w-full text-sm text-[#475569] bg-transparent focus:outline-none cursor-pointer appearance-none pr-6"
+                    >
+                      <option value="Remote / Any City">Remote / Any Location</option>
+                      <option value="San Francisco, CA">San Francisco, CA</option>
+                      <option value="New York, NY">New York, NY</option>
+                      <option value="Austin, TX">Austin, TX</option>
+                      <option value="Seattle, WA">Seattle, WA</option>
+                    </select>
+                  </div>
+                  <ChevronDown className="w-4 h-4 text-[#94A3B8] pointer-events-none absolute right-3" />
+                </div>
+
+                {/* Submit Search Button in Royal Blue */}
+                <button
+                  type="submit"
+                  className="h-11 px-7 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] active:bg-[#1E40AF] text-white font-semibold text-sm transition-all duration-200 shadow-sm shadow-[#2563EB]/25 flex items-center justify-center cursor-pointer shrink-0"
+                >
+                  Search my job
+                </button>
+              </form>
+            </div>
           </div>
 
-          {/* Main Display Headline */}
-          <h1 className="text-display text-[#0B1F3A]">
-            Where High-Growth Teams Hire{' '}
-            <span className="text-[#0F766E] underline decoration-[#14B8A6]/40 underline-offset-8">
-              Pre-Vetted
-            </span>{' '}
-            Tech Talent.
-          </h1>
-
-          {/* Body subhead */}
-          <p className="text-body-lg text-[#475569] max-w-2xl mx-auto">
-            Say goodbye to endless resume noise and transactional headhunters. Surhires matches verified
-            software engineers, product managers, and design leads with world-class companies.
-          </p>
-
-          {/* Dual CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-3">
-            <Button
-              href="/jobs"
-              variant="primary"
-              size="lg"
-              icon={ArrowRight}
-              iconPosition="right"
-              className="w-full sm:w-auto"
-            >
-              Explore Verified Roles
-            </Button>
-            <Button
-              href="/employers"
-              variant="teal"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              Hire Top Talent
-            </Button>
-          </div>
-
-          {/* Key Value Proposition Badges */}
-          <div className="pt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-[#475569] border-t border-[#E2E8F0]/80">
-            <div className="flex items-center gap-1.5 font-medium">
-              <ShieldCheck className="w-4 h-4 text-[#0F766E]" />
-              <span>Rigorous Technical Vetting</span>
-            </div>
-            <div className="flex items-center gap-1.5 font-medium">
-              <Zap className="w-4 h-4 text-[#0F766E]" />
-              <span>First Candidates in 72 Hours</span>
-            </div>
-            <div className="flex items-center gap-1.5 font-medium">
-              <Users className="w-4 h-4 text-[#0F766E]" />
-              <span>90-Day Replacement Guarantee</span>
-            </div>
+          {/* Right Column: Isometric Illustration from Reference Image */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <HeroIllustration />
           </div>
         </div>
       </Container>

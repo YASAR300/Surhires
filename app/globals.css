@@ -4,7 +4,14 @@
   --font-heading: var(--font-heading), 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-body: var(--font-body), 'Inter', system-ui, sans-serif;
 
-  /* Primary Deep Navy */
+  /* Vibrant Royal Blue (Primary Accent matching reference design) */
+  --color-brand-blue: #2563EB;
+  --color-brand-blue-hover: #1D4ED8;
+  --color-brand-blue-dark: #1E40AF;
+  --color-brand-blue-light: #EFF6FF;
+  --color-brand-blue-subtle: #DBEAFE;
+
+  /* Deep Navy */
   --color-primary: #0B1F3A;
   --color-primary-dark: #061324;
   --color-primary-light: #162E50;
@@ -17,10 +24,10 @@
   --color-teal-light: #CCFBF1;
   --color-teal-subtle: #F0FDFA;
 
-  /* Warm White & Surfaces */
-  --color-warm-white: #FAF8F5;
+  /* Crisp White & Modern Surfaces */
+  --color-warm-white: #FFFFFF;
   --color-surface: #FFFFFF;
-  --color-surface-subtle: #F7F5F0;
+  --color-surface-subtle: #F8FAFC;
 
   /* Slate Neutrals */
   --color-slate-50: #F8FAFC;
@@ -44,44 +51,32 @@
   --radius-full: 9999px;
 
   /* Shadow Tokens */
-  --shadow-xs: 0 1px 2px 0 rgb(11 31 58 / 0.04);
-  --shadow-sm: 0 2px 4px 0 rgb(11 31 58 / 0.05);
-  --shadow-md: 0 4px 12px -2px rgb(11 31 58 / 0.08), 0 2px 6px -1px rgb(11 31 58 / 0.04);
-  --shadow-lg: 0 12px 24px -4px rgb(11 31 58 / 0.1), 0 4px 8px -2px rgb(11 31 58 / 0.04);
-  --shadow-xl: 0 20px 32px -6px rgb(11 31 58 / 0.12), 0 8px 16px -4px rgb(11 31 58 / 0.06);
+  --shadow-xs: 0 1px 2px 0 rgb(15 23 42 / 0.04);
+  --shadow-sm: 0 2px 4px 0 rgb(15 23 42 / 0.05);
+  --shadow-md: 0 4px 14px -2px rgb(37 99 235 / 0.08), 0 2px 6px -1px rgb(15 23 42 / 0.04);
+  --shadow-lg: 0 12px 28px -4px rgb(37 99 235 / 0.1), 0 4px 10px -2px rgb(15 23 42 / 0.04);
+  --shadow-xl: 0 20px 36px -6px rgb(15 23 42 / 0.12), 0 8px 16px -4px rgb(15 23 42 / 0.06);
 }
 
 :root {
+  --color-brand-blue: #2563EB;
+  --color-brand-blue-hover: #1D4ED8;
+  --color-brand-blue-light: #EFF6FF;
   --color-primary: #0B1F3A;
   --color-primary-dark: #061324;
   --color-primary-light: #162E50;
-  --color-primary-soft: #EEF2F6;
   --color-teal-accent: #14B8A6;
-  --color-teal-hover: #0D9488;
   --color-teal-dark: #0F766E;
-  --color-teal-light: #CCFBF1;
-  --color-teal-subtle: #F0FDFA;
-  --color-warm-white: #FAF8F5;
+  --color-warm-white: #FFFFFF;
   --color-surface: #FFFFFF;
-  --color-surface-subtle: #F7F5F0;
-  --color-slate-50: #F8FAFC;
-  --color-slate-100: #F1F5F9;
-  --color-slate-200: #E2E8F0;
-  --color-slate-300: #CBD5E1;
-  --color-slate-400: #94A3B8;
-  --color-slate-500: #64748B;
-  --color-slate-600: #475569;
-  --color-slate-700: #334155;
-  --color-slate-800: #1E293B;
-  --color-slate-900: #0F172A;
-  --container-max-w: 1200px;
+  --container-max-w: 1380px;
 }
 
 /* Base Body Styles */
 body {
   font-family: var(--font-body), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--color-warm-white);
-  color: var(--color-slate-800);
+  background-color: #FFFFFF;
+  color: #1E293B;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -92,10 +87,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading), system-ui, sans-serif;
 }
 
-/* Type Scale Utilities */
+/* Type Scale Utilities matching reference design */
 .text-display {
   font-family: var(--font-heading), system-ui, sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: -0.025em;
@@ -103,7 +98,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-h1 {
   font-family: var(--font-heading), system-ui, sans-serif;
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.15;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -111,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-h2 {
   font-family: var(--font-heading), system-ui, sans-serif;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
   line-height: 1.25;
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -119,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-h3 {
   font-family: var(--font-heading), system-ui, sans-serif;
-  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
   line-height: 1.35;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -128,13 +123,13 @@ h1, h2, h3, h4, h5, h6 {
 .text-body-lg {
   font-family: var(--font-body), system-ui, sans-serif;
   font-size: 1.125rem;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .text-body {
   font-family: var(--font-body), system-ui, sans-serif;
   font-size: 1rem;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .text-small {
@@ -145,27 +140,27 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Section Spacing Scale */
 .section-padding {
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-padding {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 6.5rem;
+    padding-bottom: 6.5rem;
   }
 }
 
 /* Visible focus-visible ring globally */
 *:focus-visible {
-  outline: 2px solid #0F766E;
+  outline: 2px solid #2563EB;
   outline-offset: 2px;
 }
 

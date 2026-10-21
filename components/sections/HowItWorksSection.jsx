@@ -78,9 +78,9 @@ export default function HowItWorksSection() {
               type="button"
               onClick={() => setActiveTab('candidates')}
               className={cn(
-                'px-5 py-2 text-sm font-semibold rounded-lg transition-all cursor-pointer',
+                'px-6 py-2.5 text-sm font-semibold rounded-lg transition-all cursor-pointer',
                 activeTab === 'candidates'
-                  ? 'bg-white text-[#0B1F3A] shadow-xs'
+                  ? 'bg-[#2563EB] text-white shadow-sm'
                   : 'text-[#64748B] hover:text-[#0B1F3A]'
               )}
             >
@@ -90,9 +90,9 @@ export default function HowItWorksSection() {
               type="button"
               onClick={() => setActiveTab('employers')}
               className={cn(
-                'px-5 py-2 text-sm font-semibold rounded-lg transition-all cursor-pointer',
+                'px-6 py-2.5 text-sm font-semibold rounded-lg transition-all cursor-pointer',
                 activeTab === 'employers'
-                  ? 'bg-white text-[#0B1F3A] shadow-xs'
+                  ? 'bg-[#2563EB] text-white shadow-sm'
                   : 'text-[#64748B] hover:text-[#0B1F3A]'
               )}
             >
@@ -107,14 +107,14 @@ export default function HowItWorksSection() {
             return (
               <div
                 key={item.step}
-                className="relative p-6 sm:p-8 rounded-2xl bg-[#FAF8F5] border border-[#E2E8F0] flex flex-col justify-between"
+                className="relative p-7 sm:p-9 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#93C5FD] transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-[#0B1F3A] text-[#14B8A6] flex items-center justify-center shadow-xs">
+                    <div className="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center border border-[#BFDBFE]">
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <span className="font-heading font-black text-2xl text-[#CBD5E1]">
+                    <span className="font-heading font-black text-3xl text-[#CBD5E1]">
                       {item.step}
                     </span>
                   </div>

@@ -3,7 +3,7 @@ import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * @typedef {'primary' | 'accent' | 'outline' | 'ghost'} ButtonVariant
+ * @typedef {'primary' | 'accent' | 'navy' | 'outline' | 'ghost' | 'secondary'} ButtonVariant
  * @typedef {'sm' | 'md' | 'lg'} ButtonSize
  *
  * @param {Object} props
@@ -19,23 +19,32 @@ import { cn } from '@/lib/utils';
  * @param {'button' | 'submit' | 'reset'} [props.type='button'] - Button element type
  */
 const variantStyles = {
+  // Vibrant Royal Blue from reference image
   primary:
+    'bg-[#2563EB] text-white hover:bg-[#1D4ED8] active:bg-[#1E40AF] shadow-sm shadow-[#2563EB]/25 font-semibold focus-visible:ring-[#2563EB]',
+  blue:
+    'bg-[#2563EB] text-white hover:bg-[#1D4ED8] active:bg-[#1E40AF] shadow-sm shadow-[#2563EB]/25 font-semibold focus-visible:ring-[#2563EB]',
+  // Deep Navy variant
+  navy:
     'bg-[#0B1F3A] text-white hover:bg-[#162E50] active:bg-[#061324] shadow-sm shadow-[#0B1F3A]/20 focus-visible:ring-[#0B1F3A]',
+  // Teal accent
   accent:
     'bg-[#14B8A6] text-white hover:bg-[#0D9488] active:bg-[#0F766E] shadow-sm shadow-[#14B8A6]/20 font-semibold focus-visible:ring-[#0F766E]',
-  // Alias for backward compatibility
   teal:
     'bg-[#14B8A6] text-white hover:bg-[#0D9488] active:bg-[#0F766E] shadow-sm shadow-[#14B8A6]/20 font-semibold focus-visible:ring-[#0F766E]',
+  // Outline style with rounded pill/box feel matching reference
   outline:
-    'border border-[#CBD5E1] bg-white text-[#0B1F3A] hover:bg-[#F8FAFC] hover:border-[#94A3B8] active:bg-[#F1F5F9] focus-visible:ring-[#0B1F3A]',
+    'border border-[#93C5FD] bg-white text-[#2563EB] hover:bg-[#EFF6FF] hover:border-[#3B82F6] active:bg-[#DBEAFE] font-medium focus-visible:ring-[#2563EB]',
+  secondary:
+    'border border-[#E2E8F0] bg-white text-[#475569] hover:bg-[#F8FAFC] hover:text-[#0B1F3A] active:bg-[#F1F5F9] font-medium focus-visible:ring-[#2563EB]',
   ghost:
-    'bg-transparent text-[#334155] hover:bg-[#F1F5F9] hover:text-[#0B1F3A] active:bg-[#E2E8F0] focus-visible:ring-[#0F766E]',
+    'bg-transparent text-[#475569] hover:bg-[#EFF6FF] hover:text-[#2563EB] active:bg-[#DBEAFE] focus-visible:ring-[#2563EB]',
 };
 
 const sizeStyles = {
-  sm: 'h-9 px-3.5 text-xs rounded-md gap-1.5',
-  md: 'h-11 px-5 text-sm rounded-lg gap-2',
-  lg: 'h-13 px-7 text-base rounded-lg gap-2.5 font-semibold',
+  sm: 'h-9 px-4 text-xs rounded-lg gap-1.5',
+  md: 'h-11 px-5 text-sm rounded-xl gap-2',
+  lg: 'h-12 px-7 text-base rounded-xl gap-2.5 font-semibold',
 };
 
 export default function Button({
