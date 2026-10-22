@@ -24,10 +24,10 @@ export default function HeroSection() {
 
             {/* Action Buttons: Get Started + Learn more */}
             <div className="flex flex-wrap items-center gap-3.5 pt-1">
-              <Button href="/jobs" variant="primary" size="md" className="px-6 rounded-xl shadow-md shadow-[#2563EB]/20">
+              <Button href="/jobs" variant="primary" size="md" className="px-6 shadow-sm shadow-[#2563EB]/20">
                 Get Started
               </Button>
-              <Button href="/#how-it-works" variant="outline" size="md" className="px-6 rounded-xl">
+              <Button href="/#how-it-works" variant="secondary" size="md" className="px-6">
                 Learn more
               </Button>
             </div>

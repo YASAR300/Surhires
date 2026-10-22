@@ -27,21 +27,23 @@ const POPULAR_ROLES = [
 const POPULAR_TAGS = ['React', 'Next.js', 'Python', 'PyTorch', 'Kubernetes', 'AWS', 'Figma'];
 
 const LOCATION_OPTIONS = [
-  { id: 'all', label: 'All Locations', icon: Globe, sub: 'Worldwide & Remote' },
+  { id: 'india-all', label: 'India (All Tech Hubs)', icon: Globe, sub: 'Bengaluru, Delhi NCR, Hyderabad, Pune, Mumbai' },
+  { id: 'india-bangalore', label: 'Bengaluru, India', icon: Building2, sub: 'Silicon Valley of India / Tech Capital' },
+  { id: 'india-delhi', label: 'Delhi NCR, India', icon: Building2, sub: 'Gurgaon, Noida Tech Corridor' },
+  { id: 'india-hyderabad', label: 'Hyderabad, India', icon: Building2, sub: 'HITEC City & Cyberabad' },
+  { id: 'india-pune-mumbai', label: 'Pune & Mumbai, India', icon: Building2, sub: 'FinTech & Software Engineering' },
   { id: 'remote-global', label: 'Remote (Worldwide)', icon: Globe, sub: 'Any timezone / borderless' },
   { id: 'remote-us', label: 'Remote (US & Canada)', icon: Globe, sub: 'North America timezones' },
   { id: 'sf', label: 'San Francisco, CA', icon: Building2, sub: 'Bay Area / Hybrid' },
   { id: 'ny', label: 'New York, NY', icon: Building2, sub: 'NYC Metro / On-site & Hybrid' },
-  { id: 'austin', label: 'Austin, TX', icon: Building2, sub: 'Silicon Hills tech hub' },
-  { id: 'seattle', label: 'Seattle, WA', icon: Building2, sub: 'Pacific Northwest' },
-  { id: 'london', label: 'London, UK', icon: Building2, sub: 'EMEA HQ' },
-  { id: 'bangalore', label: 'Bengaluru, India', icon: Building2, sub: 'APAC Innovation Center' },
+  { id: 'london', label: 'London, UK', icon: Building2, sub: 'EMEA Tech Hub' },
+  { id: 'all', label: 'All Locations', icon: Globe, sub: 'Worldwide & Remote' },
 ];
 
 export default function HeroSearch({ className = '' }) {
   const router = useRouter();
   const [keyword, setKeyword] = useState('');
-  const [selectedLocation, setSelectedLocation] = useState('Remote (Worldwide)');
+  const [selectedLocation, setSelectedLocation] = useState('India (All Tech Hubs)');
 
   const [isKeywordFocused, setIsKeywordFocused] = useState(false);
   const [isLocationOpen, setIsLocationOpen] = useState(false);
@@ -117,17 +119,17 @@ export default function HeroSearch({ className = '' }) {
   };
 
   return (
-    <div ref={containerRef} className={cn('relative w-full z-40 select-none', className)}>
-      {/* Outer Floating Search Bar Capsule matching reference visual */}
+    <div ref={containerRef} className={cn('relative w-full z-40 select-none font-body', className)}>
+      {/* Outer Floating Search Bar Capsule with 14px radius matching tokens */}
       <form
         onSubmit={handleSubmit}
         className={cn(
-          'relative bg-white rounded-2xl border transition-all duration-200',
-          'shadow-lg shadow-blue-500/5 hover:shadow-xl hover:shadow-blue-500/10',
+          'relative bg-white rounded-[14px] border transition-all duration-200',
+          'shadow-[0_20px_45px_-10px_rgba(37,99,235,0.08),0_8px_20px_-4px_rgba(15,27,51,0.04)]',
           'p-2 sm:p-2.5 flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-3',
           isKeywordFocused || isLocationOpen
             ? 'border-[#2563EB] ring-4 ring-[#2563EB]/15'
-            : 'border-[#CBD5E1] hover:border-[#93C5FD]'
+            : 'border-[#E2E8F0] hover:border-[#93C5FD]'
         )}
       >
         {/* 1. Job Title / Keyword Input (Clean, zero browser focus outline) */}
@@ -151,7 +153,7 @@ export default function HeroSearch({ className = '' }) {
             onChange={(e) => setKeyword(e.target.value)}
             placeholder="Job title or keyword"
             style={{ outline: 'none', boxShadow: 'none' }}
-            className="w-full text-sm font-medium text-[#0B1F3A] placeholder-[#94A3B8] bg-transparent border-0 outline-none ring-0 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 p-0 truncate"
+            className="w-full text-sm font-medium text-[#0F1B33] placeholder-[#94A3B8] bg-transparent border-0 outline-none ring-0 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 p-0 truncate"
           />
 
           {keyword && (
@@ -161,7 +163,7 @@ export default function HeroSearch({ className = '' }) {
                 setKeyword('');
                 keywordInputRef.current?.focus();
               }}
-              className="p-1 rounded-full text-[#94A3B8] hover:text-[#0B1F3A] hover:bg-[#F1F5F9] transition-colors"
+              className="p-1 rounded-full text-[#94A3B8] hover:text-[#0F1B33] hover:bg-[#F6F8FC] transition-colors"
               aria-label="Clear keyword search"
             >
               <X className="w-4 h-4" />
@@ -182,9 +184,9 @@ export default function HeroSearch({ className = '' }) {
             }}
             style={{ outline: 'none', boxShadow: 'none' }}
             className={cn(
-              'w-full flex items-center justify-between gap-3 px-3 py-2 text-left cursor-pointer transition-colors rounded-xl',
+              'w-full flex items-center justify-between gap-3 px-3 py-2 text-left cursor-pointer transition-colors rounded-lg',
               'border-0 outline-none ring-0 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0',
-              'hover:bg-[#F8FAFC]'
+              'hover:bg-[#F6F8FC]'
             )}
           >
             <div className="flex items-center gap-3 min-w-0">
@@ -195,7 +197,7 @@ export default function HeroSearch({ className = '' }) {
                 )}
                 aria-hidden="true"
               />
-              <span className="text-sm font-medium text-[#0B1F3A] truncate">
+              <span className="text-sm font-medium text-[#0F1B33] truncate">
                 {selectedLocation}
               </span>
             </div>
@@ -210,21 +212,21 @@ export default function HeroSearch({ className = '' }) {
           </button>
         </div>
 
-        {/* 3. Solid Blue Submit Button matching reference */}
+        {/* 3. Solid Blue Submit Button matching tokens (8px radius, passing 4.5:1 contrast) */}
         <button
           type="submit"
           style={{ outline: 'none' }}
-          className="h-12 px-7 md:px-8 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] active:bg-[#1E40AF] text-white font-semibold text-sm transition-all duration-200 shadow-md shadow-[#2563EB]/25 hover:shadow-lg hover:shadow-[#2563EB]/35 flex items-center justify-center shrink-0 cursor-pointer active:scale-[0.98]"
+          className="h-11 px-7 md:px-8 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] active:bg-[#1E40AF] text-white font-semibold text-sm transition-all duration-200 shadow-sm shadow-[#2563EB]/25 hover:shadow-md hover:shadow-[#2563EB]/35 flex items-center justify-center shrink-0 cursor-pointer active:scale-[0.98]"
         >
           <span>Search my job</span>
         </button>
       </form>
 
-      {/* Dropdown 1: Autocomplete & Suggestions Dropdown (Elevated z-50, never clipped) */}
+      {/* Dropdown 1: Autocomplete & Suggestions Dropdown (Elevated z-50, 12px radius) */}
       {isKeywordFocused && (
-        <div className="absolute top-[calc(100%+8px)] left-0 w-full md:w-[480px] bg-white rounded-2xl border border-[#E2E8F0] shadow-2xl p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="absolute top-[calc(100%+8px)] left-0 w-full md:w-[480px] bg-white rounded-xl border border-[#E2E8F0] shadow-[0_20px_50px_-12px_rgba(15,27,51,0.12)] p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-[#F1F5F9]">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#64748B] flex items-center gap-1.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#475569] flex items-center gap-1.5">
               <TrendingUp className="w-3.5 h-3.5 text-[#2563EB]" />
               Popular Searches
             </span>
@@ -237,13 +239,13 @@ export default function HeroSearch({ className = '' }) {
                 key={role.title}
                 type="button"
                 onMouseDown={() => handleSelectRole(role.title)}
-                className="w-full text-left px-3 py-2 rounded-xl text-sm font-medium text-[#1E293B] hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors flex items-center justify-between group cursor-pointer"
+                className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-[#0F1B33] hover:bg-[#EEF4FF] hover:text-[#2563EB] transition-colors flex items-center justify-between group cursor-pointer"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
                   <Briefcase className="w-4 h-4 text-[#94A3B8] group-hover:text-[#2563EB] shrink-0" />
                   <span className="truncate">{role.title}</span>
                 </div>
-                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#F1F5F9] text-[#64748B] group-hover:bg-[#DBEAFE] group-hover:text-[#1E40AF] shrink-0 ml-2">
+                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-[#F6F8FC] text-[#475569] group-hover:bg-[#DBEAFE] group-hover:text-[#1E40AF] shrink-0 ml-2">
                   {role.category}
                 </span>
               </button>
@@ -252,7 +254,7 @@ export default function HeroSearch({ className = '' }) {
 
           {/* Quick Skill Tags */}
           <div className="mt-3 pt-3 border-t border-[#F1F5F9]">
-            <div className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider mb-2 flex items-center gap-1">
+            <div className="text-[11px] font-bold text-[#475569] uppercase tracking-wider mb-2 flex items-center gap-1">
               <Sparkles className="w-3 h-3 text-[#2563EB]" />
               Trending Skills:
             </div>
@@ -262,7 +264,7 @@ export default function HeroSearch({ className = '' }) {
                   key={tag}
                   type="button"
                   onMouseDown={() => handleSelectTag(tag)}
-                  className="px-2.5 py-1 text-xs font-semibold rounded-lg bg-[#F8FAFC] text-[#475569] hover:bg-[#EFF6FF] hover:text-[#2563EB] border border-[#E2E8F0] hover:border-[#93C5FD] transition-all cursor-pointer"
+                  className="px-2.5 py-1 text-xs font-medium rounded-md bg-[#F6F8FC] text-[#475569] hover:bg-[#EEF4FF] hover:text-[#2563EB] border border-[#E2E8F0] hover:border-[#BFDBFE] transition-all cursor-pointer"
                 >
                   {tag}
                 </button>
@@ -272,11 +274,11 @@ export default function HeroSearch({ className = '' }) {
         </div>
       )}
 
-      {/* Dropdown 2: Location & Workplace Dropdown (Elevated z-50, never clipped) */}
+      {/* Dropdown 2: Location & Workplace Dropdown (Elevated z-50, 12px radius, India options) */}
       {isLocationOpen && (
-        <div className="absolute top-[calc(100%+8px)] left-0 md:left-[35%] w-full md:w-[380px] bg-white rounded-2xl border border-[#E2E8F0] shadow-2xl p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="absolute top-[calc(100%+8px)] left-0 md:left-[35%] w-full md:w-[380px] bg-white rounded-xl border border-[#E2E8F0] shadow-[0_20px_50px_-12px_rgba(15,27,51,0.12)] p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="px-3 py-2 border-b border-[#F1F5F9] mb-1">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#64748B]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#475569]">
               Filter by Workplace or City
             </span>
           </div>
@@ -292,17 +294,17 @@ export default function HeroSearch({ className = '' }) {
                   type="button"
                   onMouseDown={() => handleSelectLocation(loc)}
                   className={cn(
-                    'w-full text-left px-3 py-2 rounded-xl transition-all flex items-center justify-between cursor-pointer',
+                    'w-full text-left px-3 py-2 rounded-lg transition-all flex items-center justify-between cursor-pointer',
                     isSelected
-                      ? 'bg-[#EFF6FF] text-[#2563EB] font-semibold'
-                      : 'hover:bg-[#F8FAFC] text-[#1E293B]'
+                      ? 'bg-[#EEF4FF] text-[#2563EB] font-semibold'
+                      : 'hover:bg-[#F6F8FC] text-[#0F1B33]'
                   )}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
                     <div
                       className={cn(
-                        'w-7 h-7 rounded-lg flex items-center justify-center shrink-0',
-                        isSelected ? 'bg-[#2563EB] text-white' : 'bg-[#F1F5F9] text-[#64748B]'
+                        'w-7 h-7 rounded-md flex items-center justify-center shrink-0',
+                        isSelected ? 'bg-[#2563EB] text-white' : 'bg-[#F6F8FC] text-[#64748B]'
                       )}
                     >
                       <IconComponent className="w-3.5 h-3.5" />
@@ -311,7 +313,7 @@ export default function HeroSearch({ className = '' }) {
                       <div className="text-sm font-semibold truncate leading-tight">
                         {loc.label}
                       </div>
-                      <div className="text-[11px] text-[#64748B] truncate leading-tight mt-0.5">
+                      <div className="text-[11px] text-[#475569] truncate leading-tight mt-0.5">
                         {loc.sub}
                       </div>
                     </div>

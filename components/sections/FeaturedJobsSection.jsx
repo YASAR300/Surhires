@@ -18,14 +18,14 @@ export default function FeaturedJobsSection() {
             <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE]">
               Featured Opportunities
             </span>
-            <h2 className="text-h2 text-[#0B1F3A]">
+            <h2 className="text-h2 text-[#2563EB]">
               Curated Openings at High-Growth Companies
             </h2>
-            <p className="text-body text-[#64748B]">
+            <p className="text-body text-[#475569]">
               Every position features confirmed salary transparency, direct engineering contacts, and verified workplace flexibility.
             </p>
           </div>
-          <Button href="/jobs" variant="outline" icon={ArrowRight} iconPosition="right">
+          <Button href="/jobs" variant="secondary" icon={ArrowRight} iconPosition="right">
             Browse All {jobListings.length}+ Roles
           </Button>
         </div>
@@ -55,7 +55,7 @@ export default function FeaturedJobsSection() {
                     <MapPin className="w-3.5 h-3.5 text-[#94A3B8]" />
                     {job.location}
                   </span>
-                  <span className="inline-flex items-center gap-1 font-bold text-[#0B1F3A]">
+                  <span className="inline-flex items-center gap-1 font-bold text-[#0F1B33]">
                     <DollarSign className="w-3.5 h-3.5 text-[#2563EB]" />
                     {job.salary}
                   </span>

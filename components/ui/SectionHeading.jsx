@@ -6,16 +6,16 @@ import { cn } from '@/lib/utils';
  * @typedef {'h1' | 'h2' | 'h3' | 'h4'} HeadingLevel
  *
  * @param {Object} props
- * @param {string | React.ReactNode} [props.eyebrow] - Optional top tag/eyebrow text
- * @param {string | React.ReactNode} props.title - Main heading title
- * @param {string | React.ReactNode} [props.subtitle] - Supporting descriptive text
- * @param {HeadingAlignment} [props.alignment='center'] - Content alignment
- * @param {HeadingLevel} [props.level='h2'] - Semantic HTML heading level
- * @param {HeadingLevel} [props.as] - Alias for level
- * @param {string} [props.className] - Additional wrapper class
- * @param {string} [props.titleClassName] - Additional heading class
- * @param {string} [props.subtitleClassName] - Additional subtitle class
- * @param {boolean} [props.invert=false] - For dark backgrounds (white text)
+ * @param {string | React.ReactNode} [props.eyebrow] - Eyebrow badge or text
+ * @param {string | React.ReactNode} props.title - Main title in serif blue
+ * @param {string | React.ReactNode} [props.subtitle] - Descriptive subtitle in sans
+ * @param {HeadingAlignment} [props.alignment='center'] - Alignment
+ * @param {HeadingLevel} [props.level='h2'] - Semantic level
+ * @param {HeadingLevel} [props.as] - Tag alias
+ * @param {string} [props.className] - Wrapper classes
+ * @param {string} [props.titleClassName] - Heading classes
+ * @param {string} [props.subtitleClassName] - Subtitle classes
+ * @param {boolean} [props.invert=false] - For dark sections
  */
 const alignmentStyles = {
   left: 'text-left items-start',
@@ -57,7 +57,7 @@ export default function SectionHeading({
       {eyebrow && (
         <div>
           {typeof eyebrow === 'string' ? (
-            <Badge variant="teal">{eyebrow}</Badge>
+            <Badge variant="primary">{eyebrow}</Badge>
           ) : (
             eyebrow
           )}
@@ -66,8 +66,9 @@ export default function SectionHeading({
 
       <Component
         className={cn(
+          'font-heading',
           headingLevelStyles[Component] || headingLevelStyles.h2,
-          invert ? 'text-white' : 'text-[#0B1F3A]',
+          invert ? 'text-white' : 'text-[#2563EB]',
           titleClassName
         )}
       >
@@ -77,8 +78,8 @@ export default function SectionHeading({
       {subtitle && (
         <p
           className={cn(
-            'text-body-lg leading-relaxed max-w-2xl',
-            invert ? 'text-[#94A3B8]' : 'text-[#64748B]',
+            'font-body text-body-lg leading-relaxed max-w-2xl',
+            invert ? 'text-[#94A3B8]' : 'text-[#475569]',
             subtitleClassName
           )}
         >

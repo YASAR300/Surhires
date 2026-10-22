@@ -52,10 +52,10 @@ export default function EmployersPage() {
             product candidates who are actively open to new roles.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            <Button href="#pricing" variant="primary" size="lg" className="px-7 rounded-xl">
+            <Button href="#pricing" variant="primary" size="lg" className="px-7">
               Explore Hiring Plans
             </Button>
-            <Button href="#contact" variant="outline" size="lg" className="px-7 rounded-xl">
+            <Button href="#contact" variant="secondary" size="lg" className="px-7">
               Speak with a Talent Advisor
             </Button>
           </div>

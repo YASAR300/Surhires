@@ -81,7 +81,7 @@ export default function HowItWorksSection() {
                 'px-6 py-2.5 text-sm font-semibold rounded-lg transition-all cursor-pointer',
                 activeTab === 'candidates'
                   ? 'bg-[#2563EB] text-white shadow-sm'
-                  : 'text-[#64748B] hover:text-[#0B1F3A]'
+                  : 'text-[#475569] hover:text-[#2563EB]'
               )}
             >
               For Candidates
@@ -93,7 +93,7 @@ export default function HowItWorksSection() {
                 'px-6 py-2.5 text-sm font-semibold rounded-lg transition-all cursor-pointer',
                 activeTab === 'employers'
                   ? 'bg-[#2563EB] text-white shadow-sm'
-                  : 'text-[#64748B] hover:text-[#0B1F3A]'
+                  : 'text-[#475569] hover:text-[#2563EB]'
               )}
             >
               For Employers
@@ -107,11 +107,11 @@ export default function HowItWorksSection() {
             return (
               <div
                 key={item.step}
-                className="relative p-7 sm:p-9 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:border-[#93C5FD] transition-all flex flex-col justify-between"
+                className="relative p-7 sm:p-8 rounded-xl bg-white border border-[#E2E8F0] shadow-[0_12px_32px_-4px_rgba(15,27,51,0.04)] hover:border-[#BFDBFE] transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center border border-[#BFDBFE]">
+                    <div className="w-12 h-12 rounded-lg bg-[#EEF4FF] text-[#2563EB] flex items-center justify-center border border-[#BFDBFE]">
                       <IconComponent className="w-6 h-6" />
                     </div>
                     <span className="font-heading font-black text-3xl text-[#CBD5E1]">
@@ -119,7 +119,7 @@ export default function HowItWorksSection() {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-[#0B1F3A] mb-2.5">
+                  <h3 className="font-heading text-lg font-bold text-[#2563EB] mb-2.5">
                     {item.title}
                   </h3>
 

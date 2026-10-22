@@ -36,12 +36,12 @@ export default function StatsSection() {
               </div>
 
               {/* Stat Title */}
-              <h3 className="font-bold text-base sm:text-lg text-[#0B1F3A]">
+              <h3 className="font-heading font-bold text-base sm:text-lg text-[#0F1B33]">
                 {stat.title}
               </h3>
 
               {/* 2-line Subtitle Description */}
-              <p className="text-xs text-[#64748B] leading-relaxed max-w-[240px]">
+              <p className="font-body text-xs text-[#475569] leading-relaxed max-w-[240px]">
                 {stat.description}
               </p>
             </div>

@@ -27,11 +27,11 @@ export default function EmployerCtaSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3">
             <Button
               href="/employers"
-              variant="navy"
+              variant="secondary"
               size="lg"
               icon={ArrowRight}
               iconPosition="right"
-              className="w-full sm:w-auto font-bold px-8 shadow-md"
+              className="w-full sm:w-auto font-bold px-8 bg-white text-[#2563EB] hover:bg-[#EEF4FF] shadow-lg border-0"
             >
               Start Hiring With Surhires
             </Button>
@@ -39,7 +39,7 @@ export default function EmployerCtaSection() {
               href="/employers#pricing"
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto bg-white/10 text-white border-white/30 hover:bg-white/20"
+              className="w-full sm:w-auto bg-white/10 text-white border-white/40 hover:bg-white/20 hover:text-white"
             >
               View Employer Pricing
             </Button>

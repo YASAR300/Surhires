@@ -3,48 +3,44 @@ import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * @typedef {'primary' | 'accent' | 'navy' | 'outline' | 'ghost' | 'secondary'} ButtonVariant
+ * @typedef {'primary' | 'secondary' | 'outline' | 'ghost'} ButtonVariant
  * @typedef {'sm' | 'md' | 'lg'} ButtonSize
  *
  * @param {Object} props
- * @param {React.ReactNode} props.children - Content of the button
- * @param {string} [props.className] - Additional CSS classes
- * @param {ButtonVariant} [props.variant='primary'] - Visual style variant
- * @param {ButtonSize} [props.size='md'] - Sizing option
- * @param {string} [props.href] - If supplied, renders as a Next.js Link
- * @param {boolean} [props.isLoading=false] - Displays spinner and disables interaction
- * @param {boolean} [props.disabled=false] - Disables the button
+ * @param {React.ReactNode} props.children - Button content
+ * @param {string} [props.className] - Extra class names
+ * @param {ButtonVariant} [props.variant='primary'] - Style variant
+ * @param {ButtonSize} [props.size='md'] - Button size (sm: 6px radius, md/lg: 8px radius)
+ * @param {string} [props.href] - Render as Next.js Link if provided
+ * @param {boolean} [props.isLoading=false] - Display spinner and disable interactions
+ * @param {boolean} [props.disabled=false] - Disable button
  * @param {React.ComponentType<{ className?: string }>} [props.icon] - Optional Lucide icon
- * @param {'left' | 'right'} [props.iconPosition='left'] - Position of the icon relative to text
- * @param {'button' | 'submit' | 'reset'} [props.type='button'] - Button element type
+ * @param {'left' | 'right'} [props.iconPosition='left'] - Position of icon
+ * @param {'button' | 'submit' | 'reset'} [props.type='button'] - Button type
  */
 const variantStyles = {
-  // Vibrant Royal Blue from reference image
+  // Solid blue primary
   primary:
-    'bg-[#2563EB] text-white hover:bg-[#1D4ED8] active:bg-[#1E40AF] shadow-sm shadow-[#2563EB]/25 font-semibold focus-visible:ring-[#2563EB]',
-  blue:
-    'bg-[#2563EB] text-white hover:bg-[#1D4ED8] active:bg-[#1E40AF] shadow-sm shadow-[#2563EB]/25 font-semibold focus-visible:ring-[#2563EB]',
-  // Deep Navy variant
-  navy:
-    'bg-[#0B1F3A] text-white hover:bg-[#162E50] active:bg-[#061324] shadow-sm shadow-[#0B1F3A]/20 focus-visible:ring-[#0B1F3A]',
-  // Teal accent
-  accent:
-    'bg-[#14B8A6] text-white hover:bg-[#0D9488] active:bg-[#0F766E] shadow-sm shadow-[#14B8A6]/20 font-semibold focus-visible:ring-[#0F766E]',
-  teal:
-    'bg-[#14B8A6] text-white hover:bg-[#0D9488] active:bg-[#0F766E] shadow-sm shadow-[#14B8A6]/20 font-semibold focus-visible:ring-[#0F766E]',
-  // Outline style with rounded pill/box feel matching reference
-  outline:
-    'border border-[#93C5FD] bg-white text-[#2563EB] hover:bg-[#EFF6FF] hover:border-[#3B82F6] active:bg-[#DBEAFE] font-medium focus-visible:ring-[#2563EB]',
+    'bg-[#2563EB] text-white hover:bg-[#1D4ED8] active:bg-[#1E40AF] shadow-sm shadow-[#2563EB]/20 font-medium focus-visible:ring-[#2563EB]',
+  // White with 1px blue border and blue text
   secondary:
-    'border border-[#E2E8F0] bg-white text-[#475569] hover:bg-[#F8FAFC] hover:text-[#0B1F3A] active:bg-[#F1F5F9] font-medium focus-visible:ring-[#2563EB]',
+    'bg-white border border-[#2563EB] text-[#2563EB] hover:bg-[#EEF4FF] active:bg-[#DBEAFE] font-medium focus-visible:ring-[#2563EB]',
+  // Outline alias for secondary
+  outline:
+    'bg-white border border-[#2563EB] text-[#2563EB] hover:bg-[#EEF4FF] active:bg-[#DBEAFE] font-medium focus-visible:ring-[#2563EB]',
+  // Subtle neutral border
+  subtle:
+    'bg-white border border-[#E2E8F0] text-[#0F1B33] hover:border-[#CBD5E1] hover:bg-[#F6F8FC] font-medium focus-visible:ring-[#2563EB]',
+  // Text only ghost
   ghost:
-    'bg-transparent text-[#475569] hover:bg-[#EFF6FF] hover:text-[#2563EB] active:bg-[#DBEAFE] focus-visible:ring-[#2563EB]',
+    'bg-transparent text-[#475569] hover:text-[#2563EB] hover:bg-transparent font-medium focus-visible:ring-[#2563EB]',
 };
 
+// 6-8px crisp radius
 const sizeStyles = {
-  sm: 'h-9 px-4 text-xs rounded-lg gap-1.5',
-  md: 'h-11 px-5 text-sm rounded-xl gap-2',
-  lg: 'h-12 px-7 text-base rounded-xl gap-2.5 font-semibold',
+  sm: 'h-9 px-3.5 text-xs rounded-md gap-1.5', // 6px radius
+  md: 'h-10 px-5 text-sm rounded-lg gap-2',    // 8px radius
+  lg: 'h-12 px-6 text-base rounded-lg gap-2.5 font-semibold',
 };
 
 export default function Button({
@@ -63,9 +59,9 @@ export default function Button({
   const isDisabled = disabled || isLoading;
 
   const baseClasses = cn(
-    'inline-flex items-center justify-center font-medium transition-all duration-200 select-none cursor-pointer',
+    'inline-flex items-center justify-center font-body transition-all duration-150 select-none cursor-pointer',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-    'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none active:scale-[0.98]',
+    'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none active:scale-[0.99]',
     variantStyles[variant] || variantStyles.primary,
     sizeStyles[size] || sizeStyles.md,
     className

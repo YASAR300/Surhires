@@ -1,24 +1,26 @@
-import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
+import { Source_Serif_4, Outfit } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import './globals.css';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-heading',
+  weight: ['600', '700'],
 });
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-body',
+  weight: ['400', '500', '600', '700'],
 });
 
 export const metadata = {
   metadataBase: new URL('https://surhires.com'),
   title: {
-    default: 'Surhires | Vetted Tech Talent & Modern Hiring Platform',
+    default: 'Surhires | Precision Tech Hiring & Talent Marketplace',
     template: '%s | Surhires',
   },
   description:
@@ -33,7 +35,7 @@ export const metadata = {
   ],
   authors: [{ name: 'Surhires Team' }],
   openGraph: {
-    title: 'Surhires | Vetted Tech Talent & Modern Hiring Platform',
+    title: 'Surhires | Precision Tech Hiring & Talent Marketplace',
     description:
       'Match with pre-screened tech talent or land your next high-impact engineering role in 14 days.',
     url: 'https://surhires.com',
@@ -43,7 +45,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Surhires | Modern Hiring & Recruitment Platform',
+    title: 'Surhires | Precision Tech Hiring & Talent Marketplace',
     description:
       'Match with pre-screened tech talent or land your next high-impact engineering role in 14 days.',
   },
@@ -51,11 +53,30 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} ${inter.variable}`}>
-      <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1E293B] antialiased">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+    <html lang="en" className={`${sourceSerif.variable} ${outfit.variable}`}>
+      <body className="min-h-screen flex flex-col bg-white text-[#0F1B33] antialiased selection:bg-[#EEF4FF] selection:text-[#2563EB]">
+        {/* Accessible Skip Link */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-[#2563EB] focus:text-white focus:text-sm focus:font-semibold focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2563EB]"
+        >
+          Skip to main content
+        </a>
+
+        {/* Semantic Header */}
+        <header>
+          <Navbar />
+        </header>
+
+        {/* Main landmark */}
+        <main id="main" className="flex-1 focus:outline-none">
+          {children}
+        </main>
+
+        {/* Semantic Footer */}
+        <footer>
+          <Footer />
+        </footer>
       </body>
     </html>
   );

@@ -3,22 +3,22 @@ import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * Accessible form select dropdown with label, hint, error states, and ARIA descriptors.
+ * Accessible form select dropdown with 8px radius, label, hint, error states, and ARIA descriptors.
  *
  * @param {Object} props
- * @param {string} [props.id] - Unique DOM id (falls back to auto-generated id)
- * @param {string} [props.name] - Form field name
- * @param {string} [props.label] - Accessible label text
- * @param {string | number} [props.value] - Controlled select value
- * @param {Function} [props.onChange] - Value change callback
- * @param {Array<string | { label: string, value: string | number }>} [props.options=[]] - List of selectable options
- * @param {string} [props.placeholder] - Placeholder disabled default option
- * @param {string} [props.error] - Validation error message
- * @param {string} [props.helperText] - Supplementary hint or instruction
- * @param {boolean} [props.disabled=false] - Disables the select element
- * @param {boolean} [props.required=false] - Marks field as required
- * @param {string} [props.className] - Container CSS classes
- * @param {string} [props.selectClassName] - Select element CSS classes
+ * @param {string} [props.id] - Unique DOM id
+ * @param {string} [props.name] - Field name
+ * @param {string} [props.label] - Accessible label
+ * @param {string | number} [props.value] - Controlled value
+ * @param {Function} [props.onChange] - Change callback
+ * @param {Array<string | { label: string, value: string | number }>} [props.options=[]] - Options
+ * @param {string} [props.placeholder] - Placeholder
+ * @param {string} [props.error] - Error message
+ * @param {string} [props.helperText] - Helper text
+ * @param {boolean} [props.disabled=false] - Disabled status
+ * @param {boolean} [props.required=false] - Required status
+ * @param {string} [props.className] - Container classes
+ * @param {string} [props.selectClassName] - Select classes
  */
 export default function Select({
   id,
@@ -47,11 +47,11 @@ export default function Select({
       .join(' ') || undefined;
 
   return (
-    <div className={cn('w-full flex flex-col space-y-1.5', className)}>
+    <div className={cn('w-full flex flex-col space-y-1.5 font-body', className)}>
       {label && (
         <label
           htmlFor={selectId}
-          className="text-sm font-semibold text-[#0B1F3A] flex items-center justify-between"
+          className="text-sm font-medium text-[#0F1B33] flex items-center justify-between"
         >
           <span>
             {label}
@@ -71,10 +71,10 @@ export default function Select({
           aria-invalid={Boolean(error)}
           aria-describedby={ariaDescribedBy}
           className={cn(
-            'w-full h-11 px-3.5 pr-10 bg-white border border-[#CBD5E1] rounded-lg text-sm text-[#0B1F3A] appearance-none transition-colors cursor-pointer',
-            'hover:border-[#94A3B8]',
-            'focus:outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/20',
-            'disabled:bg-[#F1F5F9] disabled:text-[#94A3B8] disabled:cursor-not-allowed',
+            'w-full h-10 px-3.5 pr-10 bg-white border border-[#E2E8F0] rounded-lg text-sm text-[#0F1B33] appearance-none transition-colors cursor-pointer',
+            'hover:border-[#CBD5E1]',
+            'focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/15',
+            'disabled:bg-[#F6F8FC] disabled:text-[#94A3B8] disabled:cursor-not-allowed',
             error && 'border-red-500 focus:border-red-500 focus:ring-red-500/20 text-red-950',
             selectClassName
           )}
@@ -107,7 +107,7 @@ export default function Select({
           {error}
         </p>
       ) : helperText ? (
-        <p id={hintId} className="text-xs text-[#64748B]">
+        <p id={hintId} className="text-xs text-[#475569]">
           {helperText}
         </p>
       ) : null}

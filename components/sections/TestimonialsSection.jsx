@@ -27,27 +27,27 @@ export default function TestimonialsSection() {
                       <Star key={i} className="w-4 h-4 fill-[#F59E0B]" />
                     ))}
                   </div>
-                  <Quote className="w-8 h-8 text-[#0B1F3A]/10" />
+                  <Quote className="w-8 h-8 text-[#2563EB]/20" />
                 </div>
 
-                <p className="text-sm md:text-base text-[#1E293B] italic leading-relaxed">
+                <p className="text-sm md:text-base text-[#0F1B33] italic leading-relaxed">
                   &ldquo;{t.quote}&rdquo;
                 </p>
 
                 <div className="pt-4 border-t border-[#F1F5F9] flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#0B1F3A] text-[#14B8A6] font-bold text-xs flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-[#EEF4FF] text-[#2563EB] font-bold text-xs flex items-center justify-center border border-[#BFDBFE]">
                       {t.avatar}
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-[#0B1F3A]">{t.author}</div>
-                      <div className="text-xs text-[#64748B]">
-                        {t.role} · <span className="text-[#0F766E] font-medium">{t.company}</span>
+                      <div className="text-sm font-bold text-[#0F1B33]">{t.author}</div>
+                      <div className="text-xs text-[#475569]">
+                        {t.role} · <span className="text-[#2563EB] font-medium">{t.company}</span>
                       </div>
                     </div>
                   </div>
 
-                  <span className="hidden sm:inline-block px-2.5 py-1 text-xs font-semibold rounded-md bg-[#CCFBF1] text-[#0F766E]">
+                  <span className="hidden sm:inline-block px-2.5 py-1 text-xs font-semibold rounded-md bg-[#EEF4FF] text-[#2563EB] border border-[#BFDBFE]">
                     {t.metrics}
                   </span>
                 </div>
