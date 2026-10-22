@@ -20,7 +20,9 @@ export default function JobsPage() {
   const filteredJobs = useMemo(() => {
     return jobListings.filter((job) => {
       const matchesCategory =
-        selectedCategory === 'All Roles' || job.category === selectedCategory;
+        selectedCategory === 'All Roles' ||
+        job.department === selectedCategory ||
+        job.category === selectedCategory;
       const matchesWorkplace =
         selectedWorkplace === 'All' || job.workplace === selectedWorkplace;
       const query = searchQuery.toLowerCase().trim();
