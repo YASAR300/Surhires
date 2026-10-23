@@ -1,46 +1,51 @@
-export const faqCategories = ['All Questions', 'For Job Seekers', 'For Employers', 'Pricing & Billing'];
-
 export const faqs = [
   {
-    id: 'faq-1',
-    category: 'For Job Seekers',
-    question: 'How does Surhires vet candidates and protect my privacy?',
+    id: 'faq-pricing',
+    category: 'Pricing',
+    question: 'How does employer pricing work on Surhires?',
     answer:
-      'When you submit your profile on Surhires, our specialized technical recruiters review your portfolio, code repositories, or work history. Your contact details remain confidential until you choose to accept an interview invitation from an interested employer. You are always in control of who sees your credentials.',
+      'Surhires operates on a simple, transparent model with zero upfront costs to browse or review candidate cohorts. You only pay upon a successful hire, backed by a contingency success fee or discounted annual subscription tiers for high-volume engineering teams.',
   },
   {
-    id: 'faq-2',
-    category: 'For Job Seekers',
-    question: 'Is it completely free for candidates to find jobs through Surhires?',
+    id: 'faq-verification',
+    category: 'Candidate Verification',
+    question: 'How are software engineers and product talent vetted?',
     answer:
-      'Yes, 100% free forever. Candidates never pay any fee to browse curated listings, receive tailored interview invites, or negotiate offers through Surhires. We are compensated exclusively by employers who successfully hire talent.',
+      'Every candidate passes a three-stage technical calibration: a verified review of past production code and architectural problem-solving, behavioral culture alignment with senior engineering practitioners, and confirmed availability with validated compensation expectations.',
   },
   {
-    id: 'faq-3',
-    category: 'For Employers',
-    question: 'How fast can our team receive pre-vetted candidate submissions?',
+    id: 'faq-time-to-hire',
+    category: 'Time to Hire',
+    question: 'What is the average time to hire on Surhires?',
     answer:
-      'Most engineering, product, and design searches receive their first cohort of vetted, active candidates within 48 to 72 hours. Every candidate profile includes validated technical assessments, salary expectations, and confirmed availability.',
+      'The median time to hire on Surhires is 9 business days. We deliver your first calibrated cohort within 48 to 72 hours of kickoff, allowing your team to skip weeks of outbound sourcing and top-of-funnel resume screening.',
   },
   {
-    id: 'faq-4',
-    category: 'For Employers',
-    question: 'What is the Surhires 90-day hiring replacement guarantee?',
+    id: 'faq-refunds',
+    category: 'Refunds & Guarantee',
+    question: 'What is the 90-day replacement guarantee and refund policy?',
     answer:
-      'If a full-time hire placed through our Growth or Enterprise plans leaves or does not meet agreed performance benchmarks within their first 90 days, our talent team will find a qualified replacement at zero additional fee.',
+      'All full-time placements are backed by our comprehensive 90-day hiring guarantee. If a candidate departs or does not meet agreed performance benchmarks within their first 90 days, we provide a pre-calibrated replacement at zero additional fee or offer a full service credit.',
   },
   {
-    id: 'faq-5',
-    category: 'Pricing & Billing',
-    question: 'Can we switch between self-serve job postings and fully dedicated recruiting?',
+    id: 'faq-privacy',
+    category: 'Data Privacy',
+    question: 'Is candidate and company salary data kept confidential?',
     answer:
-      'Absolutely. You can start with our Starter plan to publish verified listings directly to our candidate pool, and seamlessly upgrade to a Dedicated Recruiter pipeline whenever you need high-priority or executive placements.',
+      'Yes, absolutely. We use bank-grade AES-256 encryption. Candidates browse opportunities privately without their current employers knowing, and sensitive budget bands are shared exclusively during mutual interview confirmations.',
   },
   {
-    id: 'faq-6',
-    category: 'Pricing & Billing',
-    question: 'Do you offer customized contracts for high-volume enterprise hiring?',
+    id: 'faq-posting-limits',
+    category: 'Posting Limits',
+    question: 'Are there limits on how many roles we can post simultaneously?',
     answer:
-      'Yes, our Enterprise tier includes custom volume discounting, dedicated account executives, ATS integrations (Greenhouse, Lever, Ashby, Workday), and customized technical take-home grading pipelines.',
+      'There are no arbitrary limits on open role submissions. Growth and Enterprise accounts can run multiple simultaneous pipelines across Engineering, Product, Design, and AI with dedicated account specialists calibrating each opening.',
+  },
+  {
+    id: 'faq-support',
+    category: 'Support',
+    question: 'What dedicated support is provided during the interview process?',
+    answer:
+      'Every hiring team is paired with a dedicated Technical Talent Advisor who manages candidate scheduling, interview feedback loops, compensation benchmarking, and offer closing to ensure a seamless experience for both parties.',
   },
 ];
