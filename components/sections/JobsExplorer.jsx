@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -14,6 +14,12 @@ import {
   CheckCircle2,
   X,
   RotateCcw,
+  ChevronDown,
+  Globe,
+  Building2,
+  Check,
+  ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Badge from '@/components/ui/Badge';
@@ -47,35 +53,193 @@ function parseSalaryMax(salaryStr = '') {
   // If USD format like $180,000 - $225,000
   if (salaryStr.includes('$')) {
     const numbers = salaryStr.replace(/[^\d-]/g, '').split('-').map(Number);
-    // Convert to normalized currency scale for comparison
     return (numbers[1] || numbers[0] || 0) * 85;
   }
   return 0;
 }
 
 const LOCATION_FILTER_OPTIONS = [
-  { value: '', label: 'All Locations' },
-  { value: 'Remote', label: 'Remote' },
-  { value: 'Bengaluru', label: 'Bengaluru' },
-  { value: 'Mumbai', label: 'Mumbai' },
-  { value: 'Ahmedabad', label: 'Ahmedabad' },
-  { value: 'Delhi NCR', label: 'Delhi NCR' },
-  { value: 'Hyderabad', label: 'Hyderabad' },
-  { value: 'Pune', label: 'Pune' },
+  { value: '', label: 'All Locations', icon: Globe },
+  { value: 'Remote', label: 'Remote', icon: Globe },
+  { value: 'Bengaluru', label: 'Bengaluru', icon: Building2 },
+  { value: 'Mumbai', label: 'Mumbai', icon: Building2 },
+  { value: 'Ahmedabad', label: 'Ahmedabad', icon: Building2 },
+  { value: 'Delhi NCR', label: 'Delhi NCR', icon: Building2 },
+  { value: 'Hyderabad', label: 'Hyderabad', icon: Building2 },
+  { value: 'Pune', label: 'Pune', icon: Building2 },
 ];
 
 const TYPE_FILTER_OPTIONS = [
-  { value: '', label: 'All Types' },
-  { value: 'Full-time', label: 'Full-time' },
-  { value: 'Part-time', label: 'Part-time' },
-  { value: 'Contract', label: 'Contract' },
-  { value: 'Internship', label: 'Internship' },
+  { value: '', label: 'All Types', icon: Briefcase },
+  { value: 'Full-time', label: 'Full-time', icon: Briefcase },
+  { value: 'Part-time', label: 'Part-time', icon: Clock },
+  { value: 'Contract', label: 'Contract', icon: ShieldCheck },
+  { value: 'Internship', label: 'Internship', icon: Sparkles },
 ];
 
 const SORT_OPTIONS = [
-  { value: 'newest', label: 'Newest first' },
-  { value: 'salary-high', label: 'Salary: High to Low' },
+  { value: 'newest', label: 'Newest first', icon: Clock },
+  { value: 'salary-high', label: 'Salary: High to Low', icon: DollarSign },
 ];
+
+/**
+ * Accessible Custom Filter Dropdown.
+ * Provides a clean floating popover with options, icons, checkmark indicators,
+ * subtle active state styling, and smooth chevron animations.
+ */
+function FilterDropdown({
+  id,
+  label,
+  value,
+  onChange,
+  options,
+  icon: Icon,
+  placeholder = 'Select...',
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on outside click or Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
+  const selectedOption = options.find((opt) => opt.value === value) || options[0];
+  const isSelectedActive = Boolean(value && value !== options[0]?.value);
+
+  return (
+    <div ref={dropdownRef} className="relative flex flex-col space-y-1">
+      <label htmlFor={id} className="sr-only">
+        {label}
+      </label>
+
+      {/* Dropdown Trigger Button */}
+      <button
+        id={id}
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-label={`${label}: ${selectedOption?.label || placeholder}`}
+        className={cn(
+          'w-full h-11 px-3.5 rounded-lg border text-left transition-all duration-150',
+          'flex items-center justify-between gap-2.5 cursor-pointer select-none',
+          'focus:outline-none focus:ring-2 focus:ring-[#2563EB]/15 focus:border-[#2563EB]',
+          isOpen
+            ? 'bg-white border-[#2563EB] ring-2 ring-[#2563EB]/15 shadow-sm'
+            : isSelectedActive
+            ? 'bg-[#EEF4FF] border-[#BFDBFE] text-[#2563EB]'
+            : 'bg-[#F6F8FC] border-[#E2E8F0] hover:bg-white hover:border-[#CBD5E1]'
+        )}
+      >
+        <div className="flex items-center gap-2.5 min-w-0">
+          {Icon && (
+            <Icon
+              className={cn(
+                'w-4 h-4 shrink-0 transition-colors',
+                isOpen || isSelectedActive ? 'text-[#2563EB]' : 'text-[#94A3B8]'
+              )}
+              aria-hidden="true"
+            />
+          )}
+          <span
+            className={cn(
+              'text-sm truncate font-medium',
+              isSelectedActive ? 'text-[#2563EB] font-semibold' : 'text-[#0F1B33]'
+            )}
+          >
+            {selectedOption?.label || placeholder}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1 shrink-0">
+          {isSelectedActive && (
+            <span
+              className="w-1.5 h-1.5 rounded-full bg-[#2563EB]"
+              aria-hidden="true"
+              title="Filter applied"
+            />
+          )}
+          <ChevronDown
+            className={cn(
+              'w-4 h-4 transition-transform duration-200',
+              isOpen ? 'transform rotate-180 text-[#2563EB]' : 'text-[#94A3B8]'
+            )}
+            aria-hidden="true"
+          />
+        </div>
+      </button>
+
+      {/* Floating Popover Menu */}
+      {isOpen && (
+        <div
+          role="listbox"
+          aria-label={label}
+          className="absolute top-[calc(100%+6px)] left-0 w-full min-w-[210px] bg-white rounded-xl border border-[#E2E8F0] shadow-[0_16px_36px_-6px_rgba(15,27,51,0.12),0_6px_16px_-4px_rgba(37,99,235,0.06)] p-1.5 z-50 animate-in fade-in zoom-in-95 duration-100 max-h-64 overflow-y-auto"
+        >
+          {options.map((option) => {
+            const isSelected = option.value === value;
+            const OptionIcon = option.icon;
+
+            return (
+              <button
+                key={option.value || 'all'}
+                type="button"
+                role="option"
+                aria-selected={isSelected}
+                onClick={() => {
+                  onChange(option.value);
+                  setIsOpen(false);
+                }}
+                className={cn(
+                  'w-full px-3 py-2 rounded-lg text-xs sm:text-sm font-medium text-left flex items-center justify-between transition-colors cursor-pointer',
+                  isSelected
+                    ? 'bg-[#EEF4FF] text-[#2563EB] font-semibold'
+                    : 'text-[#475569] hover:bg-[#F6F8FC] hover:text-[#0F1B33]'
+                )}
+              >
+                <div className="flex items-center gap-2.5 truncate">
+                  {OptionIcon && (
+                    <OptionIcon
+                      className={cn(
+                        'w-3.5 h-3.5 shrink-0',
+                        isSelected ? 'text-[#2563EB]' : 'text-[#94A3B8]'
+                      )}
+                      aria-hidden="true"
+                    />
+                  )}
+                  <span className="truncate">{option.label}</span>
+                </div>
+                {isSelected && (
+                  <Check className="w-4 h-4 text-[#2563EB] shrink-0 ml-2" aria-hidden="true" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function JobsExplorer() {
   const searchParams = useSearchParams();
@@ -83,7 +247,7 @@ export default function JobsExplorer() {
   // Read initial values from URL query (?q= and ?location=)
   const initialKeyword = searchParams.get('q') || '';
   const rawLocation = searchParams.get('location') || '';
-  
+
   // Find matching location option or fallback to raw value
   const initialLocation = useMemo(() => {
     if (!rawLocation) return '';
@@ -165,15 +329,18 @@ export default function JobsExplorer() {
         <Container>
           <div className="max-w-5xl mx-auto">
             <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-[0_20px_45px_-10px_rgba(37,99,235,0.08),0_8px_20px_-4px_rgba(15,27,51,0.04)] p-4 sm:p-5 md:p-6 space-y-4">
-              {/* Controls Row */}
+              {/* Controls Row: 1 col on mobile (<640px), 2 on tablet, 4 on desktop */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                {/* 1. Keyword Input */}
+                {/* 1. Keyword Search Input */}
                 <div className="flex flex-col space-y-1">
                   <label htmlFor="jobs-search-keyword" className="sr-only">
                     Search roles, companies or skills
                   </label>
-                  <div className="relative flex items-center h-11 px-3.5 bg-[#F6F8FC] rounded-lg border border-[#E2E8F0] focus-within:border-[#2563EB] focus-within:bg-white transition-all">
-                    <Search className="w-4 h-4 text-[#94A3B8] shrink-0 mr-2.5 pointer-events-none" aria-hidden="true" />
+                  <div className="relative flex items-center h-11 px-3.5 bg-[#F6F8FC] rounded-lg border border-[#E2E8F0] hover:border-[#CBD5E1] hover:bg-white focus-within:border-[#2563EB] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#2563EB]/15 transition-all">
+                    <Search
+                      className="w-4 h-4 text-[#94A3B8] shrink-0 mr-2.5 pointer-events-none"
+                      aria-hidden="true"
+                    />
                     <input
                       id="jobs-search-keyword"
                       name="q"
@@ -188,7 +355,7 @@ export default function JobsExplorer() {
                         type="button"
                         onClick={() => setKeyword('')}
                         aria-label="Clear keyword search"
-                        className="p-1 rounded-full text-[#94A3B8] hover:text-[#0F1B33] transition-colors"
+                        className="p-1 rounded-full text-[#94A3B8] hover:text-[#0F1B33] hover:bg-[#EEF4FF] transition-colors cursor-pointer"
                       >
                         <X className="w-3.5 h-3.5" />
                       </button>
@@ -196,74 +363,38 @@ export default function JobsExplorer() {
                   </div>
                 </div>
 
-                {/* 2. Location Select */}
-                <div className="flex flex-col space-y-1">
-                  <label htmlFor="jobs-filter-location" className="sr-only">
-                    Select location
-                  </label>
-                  <div className="relative flex items-center h-11 px-3.5 bg-[#F6F8FC] rounded-lg border border-[#E2E8F0] focus-within:border-[#2563EB] focus-within:bg-white transition-all">
-                    <MapPin className="w-4 h-4 text-[#94A3B8] shrink-0 mr-2.5 pointer-events-none" aria-hidden="true" />
-                    <select
-                      id="jobs-filter-location"
-                      name="location"
-                      value={selectedLocation}
-                      onChange={(e) => setSelectedLocation(e.target.value)}
-                      className="w-full text-sm font-body font-medium text-[#0F1B33] bg-transparent border-0 outline-none p-0 pr-6 focus:outline-none focus:ring-0 cursor-pointer appearance-none"
-                    >
-                      {LOCATION_FILTER_OPTIONS.map((opt) => (
-                        <option key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
+                {/* 2. Custom Location Dropdown */}
+                <FilterDropdown
+                  id="jobs-filter-location"
+                  label="Select location"
+                  value={selectedLocation}
+                  onChange={setSelectedLocation}
+                  options={LOCATION_FILTER_OPTIONS}
+                  icon={MapPin}
+                  placeholder="All Locations"
+                />
 
-                {/* 3. Job Type Select */}
-                <div className="flex flex-col space-y-1">
-                  <label htmlFor="jobs-filter-type" className="sr-only">
-                    Select job type
-                  </label>
-                  <div className="relative flex items-center h-11 px-3.5 bg-[#F6F8FC] rounded-lg border border-[#E2E8F0] focus-within:border-[#2563EB] focus-within:bg-white transition-all">
-                    <Briefcase className="w-4 h-4 text-[#94A3B8] shrink-0 mr-2.5 pointer-events-none" aria-hidden="true" />
-                    <select
-                      id="jobs-filter-type"
-                      name="type"
-                      value={selectedType}
-                      onChange={(e) => setSelectedType(e.target.value)}
-                      className="w-full text-sm font-body font-medium text-[#0F1B33] bg-transparent border-0 outline-none p-0 pr-6 focus:outline-none focus:ring-0 cursor-pointer appearance-none"
-                    >
-                      {TYPE_FILTER_OPTIONS.map((opt) => (
-                        <option key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
+                {/* 3. Custom Job Type Dropdown */}
+                <FilterDropdown
+                  id="jobs-filter-type"
+                  label="Select job type"
+                  value={selectedType}
+                  onChange={setSelectedType}
+                  options={TYPE_FILTER_OPTIONS}
+                  icon={Briefcase}
+                  placeholder="All Types"
+                />
 
-                {/* 4. Sort Select */}
-                <div className="flex flex-col space-y-1">
-                  <label htmlFor="jobs-filter-sort" className="sr-only">
-                    Sort roles
-                  </label>
-                  <div className="relative flex items-center h-11 px-3.5 bg-[#F6F8FC] rounded-lg border border-[#E2E8F0] focus-within:border-[#2563EB] focus-within:bg-white transition-all">
-                    <ArrowUpDown className="w-4 h-4 text-[#94A3B8] shrink-0 mr-2.5 pointer-events-none" aria-hidden="true" />
-                    <select
-                      id="jobs-filter-sort"
-                      name="sort"
-                      value={selectedSort}
-                      onChange={(e) => setSelectedSort(e.target.value)}
-                      className="w-full text-sm font-body font-medium text-[#0F1B33] bg-transparent border-0 outline-none p-0 pr-6 focus:outline-none focus:ring-0 cursor-pointer appearance-none"
-                    >
-                      {SORT_OPTIONS.map((opt) => (
-                        <option key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
+                {/* 4. Custom Sort Dropdown */}
+                <FilterDropdown
+                  id="jobs-filter-sort"
+                  label="Sort roles"
+                  value={selectedSort}
+                  onChange={setSelectedSort}
+                  options={SORT_OPTIONS}
+                  icon={ArrowUpDown}
+                  placeholder="Sort by"
+                />
               </div>
 
               {/* Status Row: Live Count + Clear Filters */}
@@ -500,7 +631,7 @@ export default function JobsExplorer() {
                 type="button"
                 onClick={() => setAppliedJob(null)}
                 aria-label="Close application dialog"
-                className="p-1 rounded-lg text-[#94A3B8] hover:text-[#0F1B33] transition-colors"
+                className="p-1 rounded-lg text-[#94A3B8] hover:text-[#0F1B33] transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
