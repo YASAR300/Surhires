@@ -20,6 +20,7 @@ import { cn } from '@/lib/utils';
  * @param {string} [props.textareaClassName] - Textarea element CSS classes
  */
 export default function Textarea({
+  ref,
   id,
   name,
   label,
@@ -50,7 +51,7 @@ export default function Textarea({
       {label && (
         <label
           htmlFor={textareaId}
-          className="text-sm font-semibold text-[#0B1F3A] flex items-center justify-between"
+          className="text-sm font-medium font-body text-[#0F1B33] flex items-center justify-between"
         >
           <span>
             {label}
@@ -60,6 +61,7 @@ export default function Textarea({
       )}
 
       <textarea
+        ref={ref}
         id={textareaId}
         name={name}
         rows={rows}
@@ -71,10 +73,10 @@ export default function Textarea({
         aria-invalid={Boolean(error)}
         aria-describedby={ariaDescribedBy}
         className={cn(
-          'w-full p-3.5 bg-white border border-[#CBD5E1] rounded-lg text-sm text-[#0B1F3A] placeholder-[#94A3B8] transition-colors resize-y',
-          'hover:border-[#94A3B8]',
-          'focus:outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/20',
-          'disabled:bg-[#F1F5F9] disabled:text-[#94A3B8] disabled:cursor-not-allowed',
+          'w-full p-3.5 bg-white border border-[#E2E8F0] rounded-lg text-sm text-[#0F1B33] placeholder-[#94A3B8] transition-colors resize-y font-body',
+          'hover:border-[#CBD5E1]',
+          'focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/15',
+          'disabled:bg-[#F6F8FC] disabled:text-[#94A3B8] disabled:cursor-not-allowed',
           error && 'border-red-500 focus:border-red-500 focus:ring-red-500/20 text-red-950',
           textareaClassName
         )}

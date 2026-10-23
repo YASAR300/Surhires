@@ -21,6 +21,7 @@ import { cn } from '@/lib/utils';
  * @param {string} [props.selectClassName] - Select classes
  */
 export default function Select({
+  ref,
   id,
   name,
   label,
@@ -62,6 +63,7 @@ export default function Select({
 
       <div className="relative">
         <select
+          ref={ref}
           id={selectId}
           name={name}
           value={value}

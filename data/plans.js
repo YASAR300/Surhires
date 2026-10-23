@@ -1,13 +1,14 @@
 export const employerPlans = [
   {
     id: 'starter',
-    name: 'Self-Serve Job Post',
-    tagline: 'Ideal for early-stage startups hiring their initial team.',
+    name: 'Starter',
+    subtitle: 'Self-Serve Listing',
+    tagline: 'Ideal for early-stage startups hiring their first senior engineers.',
     price: '$299',
     billingPeriod: 'per active 30-day listing',
     featured: false,
     ctaText: 'Post a Listing',
-    ctaHref: '/employers#contact',
+    ctaHref: '#post-job',
     features: [
       'Published across Surhires vetted talent network',
       'Targeted email digest to 45,000+ active candidates',
@@ -18,14 +19,15 @@ export const employerPlans = [
   },
   {
     id: 'growth',
-    name: 'Curated Talent Pipeline',
-    tagline: 'Our most popular tier for rapidly scaling tech teams.',
+    name: 'Growth',
+    subtitle: 'Curated Pipeline',
+    tagline: 'Our most popular tier for rapidly scaling tech teams and startups.',
     price: '15%',
     billingPeriod: 'success fee per hire (no upfront cost)',
     featured: true,
     badge: 'Most Popular',
     ctaText: 'Start Hiring Talent',
-    ctaHref: '/employers#contact',
+    ctaHref: '#post-job',
     features: [
       'Dedicated technical recruiter assigned to your search',
       'Pre-interviewed candidates delivered within 72 hours',
@@ -36,21 +38,44 @@ export const employerPlans = [
     ],
   },
   {
-    id: 'enterprise',
-    name: 'Executive & Embedded Partner',
-    tagline: 'Custom partnership for enterprise organizations hiring at scale.',
+    id: 'scale',
+    name: 'Scale',
+    subtitle: 'Executive & Embedded Partner',
+    tagline: 'Custom partnership for enterprise organizations hiring engineering pods.',
     price: 'Custom',
     billingPeriod: 'tailored annual agreement or volume retained search',
     featured: false,
-    ctaText: 'Contact Enterprise Team',
-    ctaHref: '/employers#contact',
+    ctaText: 'Talk to Enterprise',
+    ctaHref: '#post-job',
     features: [
       'Embedded recruitment specialists dedicated to your company',
-      'Custom technical gradingrubric tailored to your engineering bars',
+      'Custom technical grading rubric tailored to your engineering bars',
       'Executive search for VP, Director, and C-Suite tech leaders',
       'Dedicated Slack/Teams channel with 24/7 SLA response',
-      'Comprehensive market salary intelligence and compensation benchmarking',
-      'Multi-year replacement guarantee and priority candidate routing',
+      'Comprehensive market salary intelligence and benchmarking',
+      'Multi-year replacement guarantee and priority routing',
+    ],
+  },
+];
+
+export const planComparisonFeatures = [
+  {
+    category: 'Candidate Sourcing & Vetting',
+    items: [
+      { name: 'Vetted Talent Pool Access', starter: 'Standard', growth: 'Curated Top 3%', scale: 'Custom Embedded Pool' },
+      { name: 'Candidate Delivery Speed', starter: 'Self-serve inbound', growth: 'Within 72 Hours', scale: 'Within 24-48 Hours' },
+      { name: 'Live Coding Evaluation', starter: false, growth: true, scale: true },
+      { name: 'Custom Technical Rubrics', starter: false, growth: false, scale: true },
+    ],
+  },
+  {
+    category: 'Hiring Support & Guarantees',
+    items: [
+      { name: 'Dedicated Talent Lead', starter: false, growth: true, scale: true },
+      { name: 'Candidate Replacement Guarantee', starter: 'None', growth: '90-Day Risk-Free', scale: '180-Day Full Cover' },
+      { name: 'ATS Integration (Greenhouse, Ashby)', starter: false, growth: true, scale: true },
+      { name: 'Dedicated Slack / Teams Channel', starter: false, growth: false, scale: true },
+      { name: 'Compensation Benchmarking', starter: false, growth: 'Standard', scale: 'Full Intelligence' },
     ],
   },
 ];

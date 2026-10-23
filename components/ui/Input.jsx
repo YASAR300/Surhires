@@ -21,6 +21,7 @@ import { cn } from '@/lib/utils';
  * @param {string} [props.inputClassName] - Input element CSS classes
  */
 export default function Input({
+  ref,
   id,
   name,
   label,
@@ -69,6 +70,7 @@ export default function Input({
         )}
 
         <input
+          ref={ref}
           id={inputId}
           name={name}
           type={type}
