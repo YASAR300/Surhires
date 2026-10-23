@@ -49,21 +49,23 @@
   --container-max-w: 1380px;
 }
 
-/* Base Body Styles */
-body {
-  font-family: var(--font-body), 'Outfit', system-ui, -apple-system, sans-serif;
-  background-color: #FFFFFF;
-  color: #0F1B33;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@layer base {
+  /* Base Body Styles */
+  body {
+    font-family: var(--font-body), 'Outfit', system-ui, -apple-system, sans-serif;
+    background-color: #FFFFFF;
+    color: #0F1B33;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-/* Headings: Bold serif font in bright blue (#2563EB) */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), 'Source Serif 4', Georgia, serif;
-  color: #2563EB;
-  letter-spacing: -0.02em;
+  /* Headings: Bold serif font in bright blue (#2563EB) default */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), 'Source Serif 4', Georgia, serif;
+    color: #2563EB;
+    letter-spacing: -0.02em;
+  }
 }
 
 /* Typography Scale Utilities */
