@@ -9,6 +9,7 @@ export const employerPlans = [
     featured: false,
     ctaText: 'Post a Listing',
     ctaHref: '#post-job',
+    reassurance: 'No setup fee. 30-day listing with 1 free refresh.',
     features: [
       'Published across Surhires vetted talent network',
       'Targeted email digest to 45,000+ active candidates',
@@ -28,6 +29,7 @@ export const employerPlans = [
     badge: 'Most Popular',
     ctaText: 'Start Hiring Talent',
     ctaHref: '#post-job',
+    reassurance: 'No upfront payment. 90-day replacement guarantee.',
     features: [
       'Dedicated technical recruiter assigned to your search',
       'Pre-interviewed candidates delivered within 72 hours',
@@ -47,6 +49,7 @@ export const employerPlans = [
     featured: false,
     ctaText: 'Talk to Enterprise',
     ctaHref: '#post-job',
+    reassurance: 'Custom terms. Dedicated SLA & quarterly reviews.',
     features: [
       'Embedded recruitment specialists dedicated to your company',
       'Custom technical grading rubric tailored to your engineering bars',
@@ -73,9 +76,16 @@ export const planComparisonFeatures = [
     items: [
       { name: 'Dedicated Talent Lead', starter: false, growth: true, scale: true },
       { name: 'Candidate Replacement Guarantee', starter: 'None', growth: '90-Day Risk-Free', scale: '180-Day Full Cover' },
-      { name: 'ATS Integration (Greenhouse, Ashby)', starter: false, growth: true, scale: true },
-      { name: 'Dedicated Slack / Teams Channel', starter: false, growth: false, scale: true },
+      { name: 'Salary & Counter-Offer Guidance', starter: false, growth: true, scale: true },
       { name: 'Compensation Benchmarking', starter: false, growth: 'Standard', scale: 'Full Intelligence' },
+    ],
+  },
+  {
+    category: 'ATS & Team Collaboration',
+    items: [
+      { name: 'ATS Direct Integration (Greenhouse/Ashby)', starter: false, growth: true, scale: true },
+      { name: 'Dedicated Slack / Teams Channel', starter: false, growth: false, scale: true },
+      { name: 'Custom Hiring Analytics & SLA Tracking', starter: false, growth: false, scale: true },
     ],
   },
 ];

@@ -8,9 +8,9 @@ import Container from '@/components/ui/Container';
  */
 export default function FooterCtaSection() {
   return (
-    <section className="py-14 sm:py-18 lg:py-20 bg-white">
+    <section className="py-16 lg:py-24 bg-white">
       <Container>
-        <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#1D4ED8] via-[#2563EB] to-[#1E40AF] px-6 py-14 sm:px-12 sm:py-18 lg:py-20 text-center text-white overflow-hidden shadow-2xl shadow-[#2563EB]/20">
+        <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#1D4ED8] via-[#2563EB] to-[#1E40AF] px-6 py-14 sm:px-12 sm:py-16 lg:py-18 text-center text-white overflow-hidden shadow-2xl shadow-[#2563EB]/20">
           {/* Soft ambient light accents (No distracting grids or lines) */}
           <div
             className="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"
@@ -52,7 +52,7 @@ export default function FooterCtaSection() {
             {/* Action Buttons: Solid White "Post a Job" & Crisp Outlined "Browse Jobs" */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3">
               <Link
-                href="/employers#contact"
+                href="/employers#post-job"
                 className="w-full sm:w-auto h-12 px-8 rounded-lg bg-white text-[#2563EB] hover:bg-[#EEF4FF] hover:text-[#1D4ED8] font-body font-semibold text-base transition-all duration-150 shadow-md flex items-center justify-center cursor-pointer active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2563EB]"
               >
                 Post a Job
